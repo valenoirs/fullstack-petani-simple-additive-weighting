@@ -1,0 +1,116 @@
+<nav id="navbar" class="navbar fixed-top navbar-expand-lg bg-light">
+  <div class="container-fluid ps-5 pe-5">
+    <a class="navbar-brand" role="button" href="/"
+      ><img src="" /> <i class="bi bi-behance"></i> SAW</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">
+        <li class="nav-item">
+          <a class="nav-link" href="/petani"
+            ><i class="bi bi-browser-safari"></i> Petani</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/kriteria"
+            ><i class="bi bi-bar-chart-fill"></i> Kriteria</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pupuk"
+            ><i class="bi bi-bag-fill"></i> Pupuk</a
+          >
+        </li>
+      </ul>
+      <div class="d-flex">
+        <% if (locals.username) { %>
+        <div class="dropdown">
+          <a
+            class="text-dark me-4"
+            href="#"
+            id="navbarDarkDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            data-bs-auto-close="outside"
+            style="text-decoration: none"
+            ><i class="bi bi-person-circle"></i> <%= locals.username %></a
+          >
+          <div
+            class="dropdown-menu dropdown-menu-lg-end p-4"
+            style="width: 200px"
+          >
+            <h6><%= locals.username %></h6>
+            <a
+              class="text-danger me-4"
+              href="/user/signout"
+              style="text-decoration: none"
+            >
+              Logout</a
+            >
+          </div>
+        </div>
+        <% } else { %>
+        <div class="dropdown">
+          <a
+            class="text-dark me-4"
+            href="#"
+            id="navbarDarkDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            data-bs-auto-close="outside"
+            style="text-decoration: none"
+            ><i class="bi bi-person-circle"></i> Sign in</a
+          >
+          <form
+            method="POST"
+            action="/user/signin"
+            class="dropdown-menu dropdown-menu-lg-end p-4"
+            style="width: 300px"
+          >
+            <div class="mb-3">
+              <label for="exampleDropdownFormEmail2" class="form-label"
+                >Email address</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="exampleDropdownFormEmail2"
+                placeholder="username"
+                name="username"
+                aria-describedby="emailHelp"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleDropdownFormPassword2" class="form-label"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="exampleDropdownFormPassword2"
+                placeholder="password"
+                name="password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row mt-5 px-5">
+    <div class="col">
+      <h3>Pupuk</h3>
+      <br />
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama Pupuk</th>
+            <th scope="col">Harga</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% pupuk.forEach((pupuk, index) => { %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= pupuk.nama %></td>
+            <td><%= pupuk.harga %></td>
+            <td>
+              <%= pupuk.status %>
+              <button
+                type="submit"
+                data-bs-toggle="modal"
+                data-bs-target="#updatePupuk<%= pupuk.id %>"
+                class="btn text-primary mb-1"
+                style="border: 0; padding: 0"
+              >
+                <i class="bi bi-arrow-repeat"></i>
+              </button>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% pupuk.forEach(pupuk => { %>
+<!-- Ubah Pupuk -->
+<div
+  class="modal fade"
+  id="updatePupuk<%= pupuk.id %>"
+  data-bs-backdrop="static"
+  tabindex="-1"
+  aria-labelledby="updatePupuk"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatePupuk">Ubah <%= pupuk.nama %>?</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-center">
+        <form method="POST" action="/pupuk?_method=PUT">
+          <input type="hidden" name="id" value="<%= pupuk.id %>" />
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Tutup
+          </button>
+          <button type="submit" class="btn btn-primary">Ubah Pupuk</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% }) %>

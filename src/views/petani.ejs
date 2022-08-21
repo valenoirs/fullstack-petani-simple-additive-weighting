@@ -1,0 +1,163 @@
+<div class="container-fluid">
+  <div class="row mt-5 px-5">
+    <div class="col">
+      <h3>Petani</h3>
+      <br />
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Kelompok Tani</th>
+            <th scope="col">ID</th>
+            <th scope="col">Kode Kios</th>
+            <th scope="col">Alamat</th>
+            <th scope="col">Subsektor</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% petani.forEach((petani, index) => { %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= petani.nama %></td>
+              <td><%= petani.idPetani %></td>
+              <td><%= petani.kode %></td>
+              <td><%= petani.alamat %></td>
+              <td><%= petani.subsektor %></td>
+              <td>
+                <button
+                  type="submit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#hapusPetani<%= petani.id %>"
+                  class="btn text-danger mb-1"
+                  style="border: 0; padding: 0"
+                >
+                  <i class="bi bi-file-earmark-x-fill"></i> delete
+                </button>
+                |
+                <button
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editPetani<%= petani.id %>"
+                  class="btn text-primary mb-1"
+                  style="border: 0; padding: 0"
+                >
+                  <i class="bi bi-file-zip-fill"></i> edit
+                </button>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#tambahPetani">
+        Tambah Petani
+      </button>
+    </div>
+  </div>
+</div>
+
+<% petani.forEach(petani => { %>
+      <!-- Hapus Petani -->
+      <div class="modal fade" id="hapusPetani<%= petani.id %>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="hapusPetani" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="hapusPetani">Hapus <%= petani.nama %>?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              <form method="POST" action="/petani?_method=DELETE">
+                <input type="hidden" name="id" value="<%= petani.id %>">
+      
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-danger">Hapus Petani</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- Edit Petani -->
+  <div class="modal fade" id="editPetani<%= petani.id %>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="editPetani" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editPetani">Ubah Petani</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/petani?_method=PUT">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="nama" value="<%= petani.nama %>" name="nama" required>
+                </div>
+                <div class="mb-3">
+                    <label for="id" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="idPetani" value="<%= petani.idPetani %>" name="idPetani" required>
+                </div>
+                <div class="mb-3">
+                    <label for="kode" class="form-label">Kode</label>
+                    <input type="text" class="form-control" id="kode" value="<%= petani.kode %>" name="kode" required>
+                </div>
+                <div class="mb-3">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <input type="text" class="form-control" id="alamat" value="<%= petani.alamat %>" name="alamat" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subsektor" class="form-label">Subsektor</label>
+                    <input type="text" class="form-control" id="subsektor" value="<%= petani.subsektor %>" name="subsektor" required>
+                </div>
+        </div>
+        <input type="hidden" name="id" value="<%= petani.id %>">
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Ubah Petani</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+<% }) %>
+
+<!-- Tambah Petani -->
+<div class="modal fade" id="tambahPetani" data-bs-backdrop="static" tabindex="-1" aria-labelledby="tambahPetani" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tambahPetani">Tambah Petani</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form method="post" action="/petani">
+              <div class="mb-3">
+                  <label for="nama" class="form-label">Nama</label>
+                  <input type="text" class="form-control" id="nama" name="nama" required>
+              </div>
+              <div class="mb-3">
+                  <label for="id" class="form-label">ID</label>
+                  <input type="text" class="form-control" id="idPetani" name="idPetani" required>
+              </div>
+              <div class="mb-3">
+                  <label for="kode" class="form-label">Kode</label>
+                  <input type="text" class="form-control" id="kode" name="kode" required>
+              </div>
+              <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <input type="text" class="form-control" id="alamat" name="alamat" required>
+              </div>
+              <div class="mb-3">
+                  <label for="subsektor" class="form-label">Subsektor</label>
+                  <input type="text" class="form-control" id="subsektor" name="subsektor" required>
+              </div>
+      </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  <button type="submit" class="btn btn-primary">Tambah Petani</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
