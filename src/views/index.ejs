@@ -2,7 +2,13 @@
   <div class="row mt-5 px-5">
     <div class="col">
       <h3>Simple Additive Weighting</h3>
-      <br />
+
+      <div class="text-center mt-5 mb-5">
+        <% score.forEach((score, index) => { %> <% if (index === 0) { %>
+        <h6>Kelompok Tani yang dipilih:</h6>
+        <h3><%= index + 1 %>. <%= score.name %></h3>
+        <% } %> <% }) %>
+      </div>
 
       <table class="table table-hover">
         <thead>
