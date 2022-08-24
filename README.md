@@ -1,4 +1,4 @@
-# TypeScript Fullstack Simple Additive Weighting
+# Fullstack Petani Simple Additive Weighting
 **Simple Additive Weighting to determine i don't know, farmer? 🍪**
 
 ---

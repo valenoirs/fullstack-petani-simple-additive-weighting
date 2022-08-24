@@ -1,7 +1,7 @@
 {
-  "name": "typescript-session-cookie-auth",
+  "name": "fullstack-petani-simple-additive-weighting",
   "version": "1.0.0",
-  "description": "Typescript Session-Cookie Auth",
+  "description": "Fullstack Petani Simple Additive Weighting",
   "main": "index.js",
   "scripts": {
     "start": "npm run build && npm run serve",
@@ -39,7 +39,6 @@
     "express": "^4.18.1",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
-    "fs-extra": "^10.1.0",
     "helmet": "^5.1.0",
     "joi": "^17.6.0",
     "method-override": "^3.0.0",
