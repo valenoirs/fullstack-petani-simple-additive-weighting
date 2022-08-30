@@ -28,10 +28,11 @@ export const tambahPupuk = async (req?: Request, res?: Response) => {
 
   if (pupuk.length === 0) {
     Pupuk.insertMany(newPupuk);
-    console.log(`[server]: OK! pupuk-added!`);
-  } else {
-    console.log(`[server]: OK! pupuk-already-existed!`);
+    // console.log(`[server]: OK! pupuk-added!`);
   }
+  // else {
+  //   console.log(`[server]: OK! pupuk-already-existed!`);
+  // }
 };
 
 /**

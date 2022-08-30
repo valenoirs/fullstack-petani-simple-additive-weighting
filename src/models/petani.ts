@@ -4,9 +4,9 @@ import { IPetani, PetaniModel } from "../interfaces/petani";
 // User Schema
 const PetaniSchema: Schema = new Schema<IPetani, PetaniModel>(
   {
-    nama: { type: String, required: true, unique: true },
+    nama: { type: String, required: true },
     idPetani: { type: String, required: true, unique: true },
-    kode: { type: String, required: true, unique: true },
+    kode: { type: String, required: true },
     alamat: { type: String, required: true },
     subsektor: { type: String, required: true },
     kriteria: { type: [Number], default: [1, 1, 1, 1] },

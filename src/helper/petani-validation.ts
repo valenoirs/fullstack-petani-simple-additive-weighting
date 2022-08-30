@@ -6,6 +6,8 @@ const kode = Joi.string().required();
 const alamat = Joi.string().required();
 const subsektor = Joi.string().required();
 const id = Joi.string().required();
+const idPetaniOld = Joi.string().required();
+const namaOld = Joi.string().required();
 
 // Sign in input validation
 export const tambahPetaniValidation = Joi.object().keys({
@@ -20,6 +22,7 @@ export const updatePetaniValidation = Joi.object().keys({
   id,
   nama,
   idPetani,
+  idPetaniOld,
   kode,
   alamat,
   subsektor,

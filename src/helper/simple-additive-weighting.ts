@@ -19,7 +19,7 @@ function count(arr: any, namaPetani: any) {
     if (real < 0) {
       real = 0;
     }
-    output.push({ name: namaPetani[i], score: Math.round(real) });
+    output.push({ name: namaPetani[i], score: real / 100 });
   }
 
   return output.sort((a, b) => {

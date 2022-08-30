@@ -53,25 +53,16 @@ export const tambahPetani = async (req: Request, res: Response) => {
  */
 export const updatePetani = async (req: Request, res: Response) => {
   try {
-    const value: Omit<IPetani, "kriteria"> =
-      await updatePetaniValidation.validateAsync(req.body);
+    const value = await updatePetaniValidation.validateAsync(req.body);
 
-    const { id, idPetani, nama, kode, alamat, subsektor } = value;
-
-    const petani = await Petani.findOne({ idPetani });
-
-    // If petani didn't existed
-    if (petani && idPetani !== petani.idPetani) {
-      console.log("[server]: ERR! petani-already-existed");
-      req.flash("error", "Petani sudah terdaftar, coba lagi!");
-      return res.redirect("/petani");
-    }
+    const { id, idPetani, idPetaniOld, nama, kode, alamat, subsektor } = value;
 
     await Petani.updateOne(
-      { idPetani },
+      { idPetani: idPetaniOld },
       {
         $set: {
           nama,
+          idPetani,
           kode,
           alamat,
           subsektor,
